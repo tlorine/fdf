@@ -6,7 +6,7 @@
 /*   By: tlorine <tlorine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 14:16:44 by tlorine           #+#    #+#             */
-/*   Updated: 2019/06/29 15:48:11 by tlorine          ###   ########.fr       */
+/*   Updated: 2019/06/30 18:18:56 by tlorine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,14 @@ void	coor(t_pixel *save1, t_pixel *save2, t_coords **coor)
 	(*coor)->ar_x = 0;
 }
 
-void	clear_str(t_pixel *list)
+void	clear_str(t_pixel **list)
 {
-	if (list->next != NULL)
-		clear_str(list->next);
-	free(list);
+	if (*list)
+	{
+		clear_str(&(*list)->next);
+		free(*list);
+		list = NULL;
+	}
 }
 
 void	drawing(t_string **string, t_pixel **list)
@@ -52,11 +55,14 @@ void	drawing(t_string **string, t_pixel **list)
 	t_pixel		*new;
 	t_coords	*cor;
 
-	cor = (t_coords *)malloc(sizeof(t_coords));
 	new = (*list);
+	if (!(cor = (t_coords *)malloc(sizeof(t_coords))))
+		exit(1);
 	ft_bzero((*string)->picture, WEIGHT * HEIGHT * (*string)->bits);
 	draw_x(list, string, cor);
 	(*list) = new;
 	draw_y(list, string, cor);
+	new = NULL;
 	free(cor);
+	cor = NULL;
 }

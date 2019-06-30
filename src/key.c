@@ -6,7 +6,7 @@
 /*   By: tlorine <tlorine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/29 16:05:31 by tlorine           #+#    #+#             */
-/*   Updated: 2019/06/30 14:06:35 by tlorine          ###   ########.fr       */
+/*   Updated: 2019/06/30 18:16:10 by tlorine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,11 @@ int			mouse_hook(int button, void *init)
 	return (0);
 }
 
-int			hook_keydown(int key, void *init, void *g_window)
+int			hook_keydown(int key, void *init)
 {
 	if (key == 53)
 	{
-		(void)init;
-		(void)g_window;
+		mlx_destroy_window(init, g_window);
 		exit(1);
 	}
 	return (0);

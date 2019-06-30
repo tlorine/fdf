@@ -6,7 +6,7 @@
 /*   By: tlorine <tlorine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/29 12:34:55 by tlorine           #+#    #+#             */
-/*   Updated: 2019/06/30 14:05:22 by tlorine          ###   ########.fr       */
+/*   Updated: 2019/06/30 18:09:01 by tlorine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,8 @@ void			draw_x(t_pixel **list, t_string **string, t_coords *cor);
 t_pixel			*fill_elem(t_pixel **list, char *line, int y, int pr);
 void			draw_y(t_pixel **list, t_string **string, t_coords *cor);
 void			coor(t_pixel *save1, t_pixel *save2, t_coords **coor);
-void			clear_str(t_pixel *list);
-int				hook_keydown(int key, void *init, void *window);
+void			clear_str(t_pixel **list);
+int				hook_keydown(int key, void *init);
 int				hi(char *argv, void *init, void *window, int pr);
 int				mouse_hook(int button, void *init);
 int				map_size(char *argv);

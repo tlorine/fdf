@@ -6,11 +6,11 @@
 /*   By: tlorine <tlorine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/29 12:30:29 by tlorine           #+#    #+#             */
-/*   Updated: 2019/06/29 12:30:30 by tlorine          ###   ########.fr       */
+/*   Updated: 2019/06/30 18:03:33 by tlorine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../includes/fdf.h"
 
 void	put_line(t_coords *cor, t_string **string)
 {

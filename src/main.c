@@ -6,7 +6,7 @@
 /*   By: tlorine <tlorine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 13:51:58 by tlorine           #+#    #+#             */
-/*   Updated: 2019/06/30 14:07:51 by tlorine          ###   ########.fr       */
+/*   Updated: 2019/06/30 18:19:34 by tlorine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ t_pixel		*fill_list(int map, int pr)
 	{
 		list = fill_elem(&list, line, y, pr);
 		free(line);
+		line = NULL;
 		y++;
 	}
 	close(map);
@@ -66,10 +67,12 @@ int			hi(char *argv, void *init, void *g_window, int pr)
 	string->bits = string->bits / 8;
 	ft_bzero(string->picture, WEIGHT * HEIGHT * string->bits);
 	drawing(&string, &list);
-	clear_str(list);
+	clear_str(&list);
+	list = NULL;
+	free(string);
+	string = NULL;
 	mlx_put_image_to_window(init, g_window, image, 0, 0);
 	mlx_destroy_image(init, image);
-	string = NULL;
 	return (0);
 }
 
