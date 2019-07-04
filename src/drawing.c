@@ -6,7 +6,7 @@
 /*   By: tlorine <tlorine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 14:16:44 by tlorine           #+#    #+#             */
-/*   Updated: 2019/06/30 18:18:56 by tlorine          ###   ########.fr       */
+/*   Updated: 2019/07/04 19:16:39 by tlorine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,11 @@ void	clear_str(t_pixel **list)
 	{
 		clear_str(&(*list)->next);
 		free(*list);
-		list = NULL;
+		(*list) = NULL;
 	}
 }
 
-void	drawing(t_string **string, t_pixel **list)
+void	drawing(t_string **string, t_pixel **list, void *image, void *g_init)
 {
 	t_pixel		*new;
 	t_coords	*cor;
@@ -62,7 +62,13 @@ void	drawing(t_string **string, t_pixel **list)
 	draw_x(list, string, cor);
 	(*list) = new;
 	draw_y(list, string, cor);
+	clear_str(&new);
 	new = NULL;
 	free(cor);
 	cor = NULL;
+	mlx_put_image_to_window(g_init, g_window, image, 0, 0);
+	ft_strdel(&(*string)->picture);
+	(*string)->picture = NULL;
+	free(*string);
+	*string = NULL;
 }

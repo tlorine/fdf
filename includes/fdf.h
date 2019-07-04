@@ -6,7 +6,7 @@
 /*   By: tlorine <tlorine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/29 12:34:55 by tlorine           #+#    #+#             */
-/*   Updated: 2019/06/30 18:09:01 by tlorine          ###   ########.fr       */
+/*   Updated: 2019/07/04 19:20:30 by tlorine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 
 void				*g_tmp;
 void				*g_window;
+void				*g_init;
 
 typedef struct	s_pixel
 {
@@ -59,7 +60,8 @@ typedef struct	s_coords
 
 double			error_check(double d_x, double d_y);
 void			put_v(t_coords *cor, t_string **string);
-void			drawing(t_string **string, t_pixel **list);
+void			drawing(t_string **string, t_pixel **list,
+				void *image, void *init);
 void			iso(t_pixel **list);
 void			isomet(double *x, double *y, int z, int pr);
 void			draw_x(t_pixel **list, t_string **string, t_coords *cor);
@@ -68,7 +70,7 @@ void			draw_y(t_pixel **list, t_string **string, t_coords *cor);
 void			coor(t_pixel *save1, t_pixel *save2, t_coords **coor);
 void			clear_str(t_pixel **list);
 int				hook_keydown(int key, void *init);
-int				hi(char *argv, void *init, void *window, int pr);
+int				hi(char *argv, void *init, int pr);
 int				mouse_hook(int button, void *init);
 int				map_size(char *argv);
 

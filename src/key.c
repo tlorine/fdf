@@ -6,7 +6,7 @@
 /*   By: tlorine <tlorine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/29 16:05:31 by tlorine           #+#    #+#             */
-/*   Updated: 2019/06/30 18:16:10 by tlorine          ###   ########.fr       */
+/*   Updated: 2019/07/04 19:15:46 by tlorine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,27 @@
 
 int			mouse_hook(int button, void *init)
 {
-	init = mlx_init();
+	(void)init;
 	if (button == 1)
-		hi(g_tmp, init, g_window, 1);
+	{
+		if (g_init != NULL)
+		{
+			free(g_init);
+			g_init = NULL;
+		}
+		g_init = mlx_init();
+		hi(g_tmp, g_init, 1);
+	}
 	if (button == 2)
-		hi(g_tmp, init, g_window, 0);
+	{
+		if (g_init != NULL)
+		{
+			free(g_init);
+			g_init = NULL;
+		}
+		g_init = mlx_init();
+		hi(g_tmp, g_init, 0);
+	}
 	return (0);
 }
 
